@@ -1,0 +1,142 @@
+﻿@page
+@model EcoEnergySegonaFaseDef.Pages.WaterConsumption.WaterConsumesModel
+@{
+}
+<h1>Llista de consums</h1>
+
+<div class="normal-group, selectDiv">
+	<select id="Informe" class="selector-futurista">
+        <option value="">Selecciona quines dades vols veure</option>
+        <option value="10MunicipisMesAigua">Llistat de 10 municipis amb mes consum d'aigua</option>
+        <option value="ConsumMitjaAigua">Consum mitja d'aigua per comarca</option>
+        <option value="DeteccioValorsSuspitosos">Deteccio de valors suspitosos exessivament grans</option>
+        <option value="DetectarAumentAigua">Deteccio d'augment del consum</option>
+    </select>
+</div>
+<div id="informeFields"></div>
+
+<div class="botonFinal">
+    <a asp-page="AddConsume" class="btn btn-primary, btn-futurista">Afegir nou consum</a>
+</div>
+@section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+        <script>
+            document.getElementById("Informe").addEventListener("change", function() {
+                let informeFields = document.getElementById("informeFields");
+                informeFields.innerHTML = "";
+                switch (this.value) {
+            case "10MunicipisMesAigua":
+                        informeFields.innerHTML = `
+                            <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Any</th>
+                                            <th>Codi de distrit</th>
+                                            <th>District</th>
+                                            <th>Població</th>
+                                            <th>Domini de xarxa</th>
+                                            <th>Activitats económiques i Fonts propies</th>
+                                            <th>Total</th>
+                                            <th>Consum domestic per capità</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach (var consum in Model.deuMunicipis)
+                                    {
+                                            <tr>
+                                                <td>@consum.Year</td>
+                                                <td>@consum.CodeDistrict</td>
+                                                <td>@consum.District</td>
+                                                <td>@consum.Poblation</td>
+                                                <td>@consum.Network</td>
+                                                <td>@consum.FontsAndEcoActivities</td>
+                                                <td>@consum.Total</td>
+                                                <td>@consum.Consumption</td>
+
+                                            </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        `;
+                        break;
+            case "ConsumMitjaAigua":
+                       informeFields.innerHTML = `
+                        <table >
+                                <thead>
+                                    <tr>
+                                        <th>Municipi</th>
+                                        <th>Mitja</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var consum in Model.consumMitja)
+                                {
+                                            <tr>
+                                                <td>@consum.Key</td>
+                                                <td>@consum.Value</td>
+                                            </tr>
+                                }
+                            </tbody>
+                        </table>
+                        `;
+                        break;
+            case "DeteccioValorsSuspitosos":
+                      informeFields.innerHTML = `
+                           <table>
+                                   <thead>
+                                       <tr>
+                                           <th>Any</th>
+                                           <th>Codi de distrit</th>
+                                       <th>District</th>
+                                           <th>Població</th>
+                                           <th>Domini de xarxa</th>
+                                           <th>Activitats económiques i Fonts propies</th>
+                                           <th>Total</th>
+                                           <th>Consum domestic per capità</th>
+                                       </tr>
+                                   </thead>
+                                   <tbody>
+                                            @foreach (var consum in Model.consumsSuspitosos)
+                                            {
+                                               <tr>
+                                                   <td>@consum.Year</td>
+                                                   <td>@consum.CodeDistrict</td>
+                                                   <td>@consum.District</td>
+                                                   <td>@consum.Poblation</td>
+                                                   <td>@consum.Network</td>
+                                                   <td>@consum.FontsAndEcoActivities</td>
+                                                   <td>@consum.Total</td>
+                                                   <td>@consum.Consumption</td>
+
+                                               </tr>
+                                            }
+                               </tbody>
+                           </table>
+                       `;
+                        break;
+                case "DetectarAumentAigua" :
+                    infromeFields.innerHTML = `
+                    <table >
+                               <thead>
+                                   <tr>
+                                       <th>Municipis en Aument</th>
+                                       
+                                   </tr>
+                               </thead>
+                               <tbody>
+                                    @foreach (var consum in Model.consumsCreixents)
+                                    {
+                                               <tr>
+                                                   <td>@consum</td>
+                                               </tr>
+                                    }
+                           </tbody>
+                       </table>
+                        `;
+                        break;
+                
+
+            }});
+    </script>
+     }
+            
