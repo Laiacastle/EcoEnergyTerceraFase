@@ -9,7 +9,7 @@
 <form method="post">
     <div class="form-group">
         <label for="TipusEnergia">Tipus d'Energia</label>
-        <select asp-for="sistema.Type" class="form-control" id="tipusEnergia">
+        <select asp-for="sistema.Tipus" class="form-control" id="tipusEnergia">
             <option value="">Selecciona el tipus d'energia</option>
             <option value="Solar">Solar</option>
             <option value="Hidroelectrica">Hidroeléctrica</option>
@@ -24,17 +24,28 @@
         <input asp-for="sistema.Rati" class="form-control" />
         <span asp-validation-for="sistema.Rati" class="text-danger"></span>
     </div>
-
     <div class="form-group">
-        <label asp-for="sistema.Cost">Cost</label>
-        <input asp-for="sistema.Cost" class="form-control" />
-        <span asp-validation-for="sistema.Cost" class="text-danger"></span>
+        <label asp-for="sistema.EnergiaGenerada">Rati</label>
+        <input asp-for="sistema.EnergiaGenerada" class="form-control" />
+        <span asp-validation-for="sistema.EnergiaGenerada" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="sistema.Preu">Preu</label>
-        <input asp-for="sistema.Preu" class="form-control" />
-        <span asp-validation-for="sistema.Preu" class="text-danger"></span>
+        <label asp-for="sistema.CostKWh">Cost</label>
+        <input asp-for="sistema.CostKWh" class="form-control" />
+        <span asp-validation-for="sistema.CostKWh" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="sistema.PreuKWh">Preu</label>
+        <input asp-for="sistema.PreuKWh" class="form-control" />
+        <span asp-validation-for="sistema.PreuKWh" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="sistema.DataHora">Preu</label>
+        <input asp-for="sistema.DataHora" class="form-control" />
+        <span asp-validation-for="sistema.DataHora" class="text-danger"></span>
     </div>
 
     <button type="submit" class="btn btn-primary">Afegir</button>

@@ -1,4 +1,3 @@
-using EcoEnergySegonaFaseDef.Classes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text.Json;
@@ -7,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Xml;
+using EcoEnergyTerceraFase.Models;
 namespace EcoEnergySegonaFaseDef.Pages.EnergyIndicators
 {
     public class AddIndicatorModel : PageModel
