@@ -7,6 +7,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Xml;
 using EcoEnergyTerceraFase.Models;
+using EcoEnergyTerceraFase.Data;
 namespace EcoEnergySegonaFaseDef.Pages.EnergyIndicators
 {
     public class AddIndicatorModel : PageModel
@@ -19,14 +20,10 @@ namespace EcoEnergySegonaFaseDef.Pages.EnergyIndicators
         public IActionResult OnPost()
         {
 
-            string filePath = "./Pages/Files/indicadors_energetics_cat.json";
+            using var context = new ApplicationDbContext();
 
-            var json = System.IO.File.ReadAllText(filePath);
-            List<IndicadorsEnergetics> indi = System.Text.Json.JsonSerializer.Deserialize<List<IndicadorsEnergetics>>(json);
-            indi.Add(indicator);
-            var options = new JsonSerializerOptions { WriteIndented = true };
-            string jsonActualizado = JsonConvert.SerializeObject(indi, Newtonsoft.Json.Formatting.Indented);
-            System.IO.File.WriteAllText(filePath, jsonActualizado);
+            context.Indicadors.Add(indicator);
+            context.SaveChanges();
             return RedirectToPage("EnergyIndicators");
         }
     }
