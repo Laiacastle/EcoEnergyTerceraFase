@@ -1,4 +1,5 @@
-using EcoEnergySegonaFaseDef.Classes;
+using EcoEnergyTerceraFase.Data;
+using EcoEnergyTerceraFase.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -21,7 +22,8 @@ namespace EcoEnergySegonaFaseDef.Pages.Simulations
         }
         public IActionResult OnPost()
         {
-            string sistemLine;
+            using var context = new ApplicationDbContext();
+            Simulacions simulacio;
             string filePath = "./Pages/Files/simulations.csv";
             if (!ModelState.IsValid)
             {
@@ -42,16 +44,16 @@ namespace EcoEnergySegonaFaseDef.Pages.Simulations
                 ModelState.AddModelError("SistemaSolar.HoresSol", "Les hodes de sal han de ser major a 0");
                 return Page();
             }
-            switch (sistema.GetType())
+            switch (sistema.Tipus)
             {
-                case "Solar": sistemLine = $"{solar.HoresSol},{sistema.Rati},{sistema.Preu},{sistema.Cost},{sistema.GetDate},{sistema.GetType()}\n";break;
-                case "Eolica": sistemLine = $"{eolica.VelocitatVent},{sistema.Rati},{sistema.Preu},{sistema.Cost},{sistema.GetDate},{sistema.GetType()}\n"; break;
-                case "Hidroelectrica": sistemLine = $"{hidro.CabalAigua},{sistema.Rati},{sistema.Preu},{sistema.Cost},{sistema.GetDate},{sistema.GetType()}\n"; break;
-                default: sistemLine = $"{solar.HoresSol},{sistema.Rati},{sistema.Preu},{sistema.Cost},{sistema.GetDate},{sistema.GetType()}\n"; break;
+                case "Solar": 
+                    simulacio = new Simulacions { Tipus = solar.Tipus, Rati = solar.Rati, EnergiaGenerada = solar.EnergiaGenerada, CostKWh = solar.CostKWh, PreuKWh = solar.PreuKWh, DataHora = solar.DataHora, Value = solar.HoresSol }
+                    ;break;
+                case "Eolica": simulacio = new Simulacions { Tipus = eolica.Tipus, Rati = eolica.Rati, EnergiaGenerada = eolica.EnergiaGenerada, CostKWh = eolica.CostKWh, PreuKWh = eolica.PreuKWh, DataHora = eolica.DataHora, Value = eolica.VelocitatVent }; break;
+                case "Hidroelectrica": simulacio = new Simulacions { Tipus = hidro.Tipus, Rati = hidro.Rati, EnergiaGenerada = hidro.EnergiaGenerada, CostKWh = hidro.CostKWh, PreuKWh = hidro.PreuKWh, DataHora = hidro.DataHora, Value = solar.HoresSol }; break;
+                default: simulacio = new Simulacions { Tipus = solar.Tipus, Rati = solar.Rati, EnergiaGenerada = solar.EnergiaGenerada, CostKWh = solar.CostKWh, PreuKWh = solar.PreuKWh, DataHora = solar.DataHora, Value = solar.HoresSol }; break;
             }
-            
-            System.IO.File.AppendAllText(filePath, sistemLine);
-                  
+            context.Simulacions.Add(simulacio);
             return RedirectToPage("Simulations");
         }
     }
