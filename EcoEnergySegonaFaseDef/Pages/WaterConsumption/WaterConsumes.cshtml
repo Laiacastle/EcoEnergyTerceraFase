@@ -52,7 +52,7 @@
                                                 <td>@consum.FontsAndEcoActivities</td>
                                                 <td>@consum.Total</td>
                                                 <td>@consum.Consumption</td>
-
+                                                <td><a asp-page="../Delete" asp-route-simulation="@null" asp-route-consume="@consum.Id" asp-route-indicator="@null" class="btn btn-primary, btn-futurista">Esborra</a></td>
                                             </tr>
         }
                             </tbody>
@@ -74,6 +74,7 @@
                                             <tr>
                                                 <td>@consum.Key</td>
                                                 <td>@consum.Value</td>
+                                                
                                             </tr>
         }
                         </tbody>
@@ -107,7 +108,7 @@
                                                    <td>@consum.FontsAndEcoActivities</td>
                                                    <td>@consum.Total</td>
                                                    <td>@consum.Consumption</td>
-
+                                                   <td><a asp-page="../Delete" asp-route-simulation="@null" asp-route-consume="@consum.Id" asp-route-indicator="@null" class="btn btn-primary, btn-futurista">Esborra</a></td>
                                                </tr>
         }
                            </tbody>
@@ -128,6 +129,7 @@
         {
                                                <tr>
                                                    <td>@consum</td>
+                                                   
                                                </tr>
         }
                        </tbody>
