@@ -47,13 +47,14 @@ namespace EcoEnergySegonaFaseDef.Pages.Simulations
             switch (sistema.Tipus)
             {
                 case "Solar": 
-                    simulacio = new Simulacions { Tipus = solar.Tipus, Rati = solar.Rati, EnergiaGenerada = solar.EnergiaGenerada, CostKWh = solar.CostKWh, PreuKWh = solar.PreuKWh, DataHora = solar.DataHora, Value = solar.HoresSol }
+                    simulacio = new Simulacions { Tipus = sistema.Tipus, Rati = sistema.Rati, EnergiaGenerada = sistema.EnergiaGenerada, CostKWh = sistema.CostKWh, PreuKWh = sistema.PreuKWh, DataHora = sistema.DataHora, Value = solar.HoresSol }
                     ;break;
-                case "Eolica": simulacio = new Simulacions { Tipus = eolica.Tipus, Rati = eolica.Rati, EnergiaGenerada = eolica.EnergiaGenerada, CostKWh = eolica.CostKWh, PreuKWh = eolica.PreuKWh, DataHora = eolica.DataHora, Value = eolica.VelocitatVent }; break;
-                case "Hidroelectrica": simulacio = new Simulacions { Tipus = hidro.Tipus, Rati = hidro.Rati, EnergiaGenerada = hidro.EnergiaGenerada, CostKWh = hidro.CostKWh, PreuKWh = hidro.PreuKWh, DataHora = hidro.DataHora, Value = solar.HoresSol }; break;
-                default: simulacio = new Simulacions { Tipus = solar.Tipus, Rati = solar.Rati, EnergiaGenerada = solar.EnergiaGenerada, CostKWh = solar.CostKWh, PreuKWh = solar.PreuKWh, DataHora = solar.DataHora, Value = solar.HoresSol }; break;
+                case "Eolica": simulacio = new Simulacions { Tipus = sistema.Tipus, Rati = sistema.Rati, EnergiaGenerada = sistema.EnergiaGenerada, CostKWh = sistema.CostKWh, PreuKWh = sistema.PreuKWh, DataHora = sistema.DataHora, Value = eolica.VelocitatVent }; break;
+                case "Hidroelectrica": simulacio = new Simulacions { Tipus = sistema.Tipus, Rati = sistema.Rati, EnergiaGenerada = sistema.EnergiaGenerada, CostKWh = sistema.CostKWh, PreuKWh = sistema.PreuKWh, DataHora = sistema.DataHora, Value = solar.HoresSol }; break;
+                default: simulacio = new Simulacions { Tipus = sistema.Tipus, Rati = sistema.Rati, EnergiaGenerada = sistema.EnergiaGenerada, CostKWh = sistema.CostKWh, PreuKWh = sistema.PreuKWh, DataHora = sistema.DataHora, Value = solar.HoresSol }; break;
             }
             context.Simulacions.Add(simulacio);
+            context.SaveChanges();
             return RedirectToPage("Simulations");
         }
     }

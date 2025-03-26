@@ -6,6 +6,7 @@ using static EcoEnergySegonaFaseDef.Pages.WaterConsumption.WaterConsumesModel;
 using System.Xml.Serialization;
 using System.Xml;
 using EcoEnergyTerceraFase.Models;
+using EcoEnergyTerceraFase.Data;
 
 namespace EcoEnergySegonaFaseDef.Pages.WaterConsumption
 {
@@ -18,7 +19,10 @@ namespace EcoEnergySegonaFaseDef.Pages.WaterConsumption
         }
         public IActionResult OnPost()
         {
-            throw new NotImplementedException();
+            using var context = new ApplicationDbContext();
+            context.Consums.Add(consum);
+            context.SaveChanges();
+            return RedirectToPage("WaterConsumes");
         }
     }
 }
