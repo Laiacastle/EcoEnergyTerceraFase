@@ -1,0 +1,131 @@
+﻿@page 
+@model EcoEnergyTerceraFase.Pages.UpdateModel
+@{
+    <h2>Modificar</h2>
+       <form method="post">
+	@if(Model.simulation != null){
+        
+        <input type="hidden" asp-for="simulation.Id" />
+            <div class="form-group">
+                <label for="TipusEnergia">Tipus d'Energia</label>
+                <select asp-for="simulation.Tipus" class="form-control" id="tipusEnergia">
+                    <option value="">Selecciona el tipus d'energia</option>
+                    <option value="Solar" selected="@(Model.simulation!=null? "selected":null)">Solar</option>
+                    <option value="Hidroelectrica" selected="@(Model.indicator!=null? "selected":null)">Hidroeléctrica</option>
+                <option value="Eolica" selected="@(Model.consume!=null? "selected":null)">Eólica</option>
+                </select>
+            </div>
+
+            <div id="energiaFields"></div>
+
+            <div class="form-group">
+                <label asp-for="simulation.Rati">Rati</label>
+                <input asp-for="simulation.Rati" class="form-control" />
+                <span asp-validation-for="simulation.Rati" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="simulation.EnergiaGenerada">Energia Generada</label>
+                <input asp-for="simulation.EnergiaGenerada" class="form-control" />
+                <span asp-validation-for="simulation.EnergiaGenerada" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="simulation.CostKWh">Cost</label>
+                <input asp-for="simulation.CostKWh" class="form-control" />
+                <span asp-validation-for="simulation.CostKWh" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="simulation.PreuKWh">Preu</label>
+                <input asp-for="simulation.PreuKWh" class="form-control" />
+                <span asp-validation-for="simulation.PreuKWh" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="simulation.DataHora">Data</label>
+                <input asp-for="simulation.DataHora" class="form-control" />
+                <span asp-validation-for="simulation.DataHora" class="text-danger"></span>
+            </div>
+
+            
+
+	}
+    else if(Model.consume != null){
+            <input type="hidden" asp-for="consume.Id" />
+            <div class="form-group">
+                <label asp-for="consume.Year"></label>
+                <input asp-for="consume.Year" class="form-control" />
+                <span asp-validation-for="consume.Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="consume.CodeDistrict"></label>
+                <input asp-for="consume.CodeDistrict" class="form-control" />
+                <span asp-validation-for="consume.CodeDistrict" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="consume.District"></label>
+                <input asp-for="consume.District" class="form-control" />
+                <span asp-validation-for="consume.District" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="consume.Poblation"></label>
+                <input asp-for="consume.Poblation" class="form-control" />
+                <span asp-validation-for="consume.Poblation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="consume.Network"></label>
+                <input asp-for="consume.Network" class="form-control" />
+                <span asp-validation-for="consume.Network" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="consume.FontsAndEcoActivities"></label>
+                <input asp-for="consume.FontsAndEcoActivities" class="form-control" />
+                <span asp-validation-for="consume.FontsAndEcoActivities" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="consume.Consumption"></label>
+                <input asp-for="consume.Consumption" class="form-control" />
+                <span asp-validation-for="consume.Consumption" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="consume.Total"></label>
+                <input asp-for="consume.Total" class="form-control" />
+                <span asp-validation-for="consume.Total" class="text-danger"></span>
+            </div>
+
+    }
+    else if (Model.indicator != null){
+            <input type="hidden" asp-for="indicator.Id" />
+    <div class="form-group">
+        <label asp-for="indicator.Data">Date</label>
+        <input asp-for="indicator.Data" class="form-control" />
+        <span asp-validation-for="indicator.Data" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="indicator.CDEEBC_ProdNeta">CDEEBC_ProdNeta</label>
+        <input asp-for="indicator.CDEEBC_ProdNeta" class="form-control" />
+        <span asp-validation-for="indicator.CDEEBC_ProdNeta" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="indicator.CDEEBC_ProdDisp">CDEEBC_ProdDisp</label>
+        <input asp-for="indicator.CDEEBC_ProdDisp" class="form-control" />
+        <span asp-validation-for="indicator.CDEEBC_ProdDisp" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="indicator.CDEEBC_DemandaElectr">CDEEBC_DemandaElectr</label>
+        <input asp-for="indicator.CDEEBC_DemandaElectr" class="form-control" />
+        <span asp-validation-for="indicator.CDEEBC_DemandaElectr" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="indicator.CCAC_GasolinaAuto">CCAC_GasolinaAuto</label>
+        <input asp-for="indicator.CCAC_GasolinaAuto" class="form-control" />
+        <span asp-validation-for="indicator.CCAC_GasolinaAuto" class="text-danger"></span>
+    </div>
+   
+    }
+    <button type="submit" class="btn btn-primary">Afegir</button>
+    </form>
+}

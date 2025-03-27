@@ -12,6 +12,8 @@ namespace EcoEnergyTerceraFase.Models
         public int Id { get; set; }
         public string? Tipus { get; set; }
         public double Value { get; set; }
+        [Required]
+        [Range(0.1, 0.3)]
         public double Rati { get; set; }
         public double EnergiaGenerada { get; set; }
         public double CostKWh { get; set; }

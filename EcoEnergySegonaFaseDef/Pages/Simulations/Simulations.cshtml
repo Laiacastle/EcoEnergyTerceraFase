@@ -31,6 +31,7 @@
                 <td>@energia.PreuKWh</td>
                 <td>@energia.DataHora</td>
                 <td><a asp-page="../Delete" asp-route-simulation="@energia.Id" asp-route-consume="@null" asp-route-indicator="@null" class="btn btn-primary, btn-futurista">Esborra</a></td>
+                <td><a asp-page="../Update" asp-route-simulationId="@energia.Id" asp-route-consumeId="@null" asp-route-indicatorId="@null" class="btn btn-primary, btn-futurista">Edita</a></td>
             </tr>
         }
     </tbody>
