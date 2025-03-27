@@ -9,27 +9,28 @@
 
 <table >
     <thead>
-        <tr>
+		<tr>
+			
+            <th>Tipus de Simulació</th>
             <th>Hores de sol / Velocitat del vent / cabal d'aigua</th>
             <th>Rati</th>
             <th>Preu</th>
             <th>Cost</th>
             <th>Data</th>
-            <th>Tipus de Simulació</th>
             <th>Result</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var energia in Model.sistems)
         {
-            <tr>
-                <td>@energia.Value</td>
+			<tr>
                 <td>@energia.Tipus</td>
+                <td>@energia.Value</td>
                 <td>@energia.Rati</td>
-                <td>@energia.EnergiaGenerada</td>
+				<td>@energia.PreuKWh</td>
                 <td>@energia.CostKWh</td>
-                <td>@energia.PreuKWh</td>
-                <td>@energia.DataHora</td>
+				<td>@energia.DataHora</td>
+                <td>@energia.EnergiaGenerada</td>
                 <td><a asp-page="../Delete" asp-route-simulation="@energia.Id" asp-route-consume="@null" asp-route-indicator="@null" class="btn btn-primary, btn-futurista">Esborra</a></td>
                 <td><a asp-page="../Update" asp-route-simulationId="@energia.Id" asp-route-consumeId="@null" asp-route-indicatorId="@null" class="btn btn-primary, btn-futurista">Edita</a></td>
             </tr>

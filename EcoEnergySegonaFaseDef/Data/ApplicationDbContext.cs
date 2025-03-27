@@ -1,5 +1,6 @@
 ﻿using EcoEnergyTerceraFase.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Net;
 
 namespace EcoEnergyTerceraFase.Data
@@ -10,6 +11,8 @@ namespace EcoEnergyTerceraFase.Data
         public DbSet<ConsumAigua> Consums { get; set; }
         public DbSet<IndicadorsEnergetics> Indicadors {  get; set; }
 
+        public ApplicationDbContext() { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             var configuration = new ConfigurationBuilder()
