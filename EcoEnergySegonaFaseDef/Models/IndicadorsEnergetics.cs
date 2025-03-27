@@ -12,14 +12,19 @@ namespace EcoEnergyTerceraFase.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Name("Data")]
+        [Required]
         public DateTime Data { get; set; }
         [Name("CDEEBC_ProdNeta")]
+        [Required]
         public double CDEEBC_ProdNeta { get; set; }
         [Name("CDEEBC_ProdDisp")]
+        [Required]
         public double CDEEBC_ProdDisp { get; set; }
         [Name("CDEEBC_DemandaElectr")]
+        [Required]
         public double CDEEBC_DemandaElectr { get; set; }
         [Name("CCAC_GasolinaAuto")]
+        [Required]
         public double CCAC_GasolinaAuto { get; set; }
         
 

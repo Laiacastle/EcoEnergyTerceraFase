@@ -14,6 +14,7 @@ namespace EcoEnergyTerceraFase.Models
         [Name("Year")]
         public int Year { get; set; }
         [Name("CodeDistrict")]
+        [Required]
         public int CodeDistrict { get; set; }
         [Name("District")]
         public string? District { get; set; }
@@ -24,8 +25,10 @@ namespace EcoEnergyTerceraFase.Models
         [Name("FontsAndEcoActivities")]
         public int FontsAndEcoActivities { get; set; }
         [Name("Total")]
+        [Required]
         public int Total { get; set; }
         [Name("Consumption")]
+        [Required]
         public double Consumption { get; set; }
 
     }
