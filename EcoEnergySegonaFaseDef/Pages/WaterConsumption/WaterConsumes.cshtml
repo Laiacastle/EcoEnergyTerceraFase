@@ -53,6 +53,7 @@
                                                 <td>@consum.Total</td>
                                                 <td>@consum.Consumption</td>
                                                 <td><a asp-page="../Delete" asp-route-simulation="@null" asp-route-consume="@consum.Id" asp-route-indicator="@null" class="btn btn-primary, btn-futurista">Esborra</a></td>
+                                                <td><a asp-page="../Update" asp-route-simulationId="@null" asp-route-consumeId="@consum.Id" asp-route-indicatorId="@null" class="btn btn-primary, btn-futurista">Edita</a></td>
                                             </tr>
         }
                             </tbody>
@@ -109,6 +110,7 @@
                                                    <td>@consum.Total</td>
                                                    <td>@consum.Consumption</td>
                                                    <td><a asp-page="../Delete" asp-route-simulation="@null" asp-route-consume="@consum.Id" asp-route-indicator="@null" class="btn btn-primary, btn-futurista">Esborra</a></td>
+                                                   <td><a asp-page="../Update" asp-route-simulationId="@null" asp-route-consumeId="@consum.Id" asp-route-indicatorId="@null" class="btn btn-primary, btn-futurista">Edita</a></td>
                                                </tr>
         }
                            </tbody>
